@@ -1,0 +1,160 @@
+  @if (_stawka) {
+<div class="stawka-edit-form">
+  <h2> {{ title ?? "" }}</h2>
+
+
+
+  <!-- Dane podstawowe -->
+  <section class="form-section">
+    <div class="form-grid grid-1col">
+
+      <!-- Nazwa stawki -->
+      <div class="form-field">
+        <label>Nazwa stawki</label>
+
+        <select class="form-select"
+                [(ngModel)]="_stawka.idSlownikKosztow">
+
+          <option [ngValue]="null">
+            Wybierz
+          </option>
+
+          @for (stawka of slownik_stawek; track stawka.id) {
+
+          <option [ngValue]="stawka.id">
+            {{ stawka.nazwa }}
+          </option>
+
+          }
+
+        </select>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Dane podstawowe -->
+  <section class="form-section">
+    <div class="form-grid grid-5col">
+
+
+      <!--1 -->
+      <div class="form-field">
+        <label>Jednostka miary</label>
+
+        <select class="form-select" [(ngModel)]="_stawka.idJednostkaMiar">
+
+          <option [ngValue]="null">
+            Wybierz
+          </option>
+
+          @for (jednostka of jm; track jednostka.id) {
+
+          <option [ngValue]="jednostka.id">
+            {{ jednostka.nazwa }}
+          </option>
+
+          }
+
+        </select>
+      </div>
+      <!--2 -->
+      <div class="form-field">
+        <label>Ilość</label>
+
+        <input type="number"
+               class="form-control"
+               [(ngModel)]="_stawka.ilosc">
+      </div>
+
+
+      <!--3 -->
+      <div class="form-field">
+        <label>Stawka</label>
+
+        <input type="number"
+               class="form-control"
+               [(ngModel)]="_stawka.kwotaWWalucie">
+      </div>
+
+      <!--4 -->
+      <div class="form-field">
+        <label>Waluta</label>
+
+        <select class="form-select"
+                [(ngModel)]="_stawka.idWaluty">
+
+          <option [ngValue]="null">
+            Wybierz
+          </option>
+
+          @for (waluta of waluty; track waluta.id) {
+
+          <option [ngValue]="waluta.id">
+            {{ waluta.nazwa }}
+          </option>
+
+          }
+
+        </select>
+      </div>
+
+      <!-- 5 -->
+      <div class="form-field">
+        <label>VAT</label>
+
+        <select class="form-select"
+                [(ngModel)]="_stawka.idVat">
+
+          <option [ngValue]="null">
+            Wybierz
+          </option>
+
+          @for (vat of stawkiVat; track vat.id) {
+
+          <option [ngValue]="vat.id">
+            {{ vat.nazwa }}
+          </option>
+
+          }
+
+        </select>
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- Uwagi -->
+  <section class="form-section">
+
+    <div class="form-grid grid-1col">
+      <div class="form-field">
+        <label for="uwagi">Uwagi</label>
+        <textarea rows="3"
+                  [(ngModel)]="_stawka.uwagi"></textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- Przyciski -->
+  <div class="form-action-buttons">
+
+
+
+
+    <button type="button"
+            class="btn btn-primary"
+            (click)="zapisz()">
+      Zapisz zmiany
+    </button>
+
+
+  </div>
+
+
+</div>
+  } @else {
+<p>Ładowanie danych...</p>
+  }
+

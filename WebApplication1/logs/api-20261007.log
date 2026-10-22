@@ -1,0 +1,23 @@
+2026-10-07 11:25:34.544 +02:00 [ERR] Błąd podczas edycji danych usera
+System.ArgumentNullException: Value cannot be null. (Parameter 'source')
+   at System.Linq.ThrowHelper.ThrowArgumentNullException(ExceptionArgument argument)
+   at System.Linq.Enumerable.Distinct[TSource](IEnumerable`1 source, IEqualityComparer`1 comparer)
+   at System.Linq.Enumerable.Distinct[TSource](IEnumerable`1 source)
+   at WebApplication1.Repositories.User.UserRepository.Update_User_All_Info_Async(Int32 userId, Int32 id, Update_User_AllInfo_DTO dto) in C:\Users\remin\Desktop\trening\Euro_Trans_API\WebApplication1\Repositories\User\UserRepository.cs:line 303
+2026-10-07 11:26:44.708 +02:00 [ERR] Błąd podczas edycji danych usera
+System.ArgumentNullException: Value cannot be null. (Parameter 'source')
+   at System.Linq.ThrowHelper.ThrowArgumentNullException(ExceptionArgument argument)
+   at System.Linq.Enumerable.Distinct[TSource](IEnumerable`1 source, IEqualityComparer`1 comparer)
+   at System.Linq.Enumerable.Distinct[TSource](IEnumerable`1 source)
+   at WebApplication1.Repositories.User.UserRepository.Update_User_All_Info_Async(Int32 userId, Int32 id, Update_User_AllInfo_DTO dto) in C:\Users\remin\Desktop\trening\Euro_Trans_API\WebApplication1\Repositories\User\UserRepository.cs:line 303
+2026-10-07 11:26:58.315 +02:00 [ERR] Błąd podczas edycji danych usera
+System.ArgumentNullException: Value cannot be null. (Parameter 'source')
+   at System.Linq.ThrowHelper.ThrowArgumentNullException(ExceptionArgument argument)
+   at System.Linq.Enumerable.Distinct[TSource](IEnumerable`1 source, IEqualityComparer`1 comparer)
+   at System.Linq.Enumerable.Distinct[TSource](IEnumerable`1 source)
+   at WebApplication1.Repositories.User.UserRepository.Update_User_All_Info_Async(Int32 userId, Int32 id, Update_User_AllInfo_DTO dto) in C:\Users\remin\Desktop\trening\Euro_Trans_API\WebApplication1\Repositories\User\UserRepository.cs:line 303
+2026-10-07 11:30:18.508 +02:00 [ERR] Błąd podczas edycji danych usera
+System.ArgumentNullException: Value cannot be null. (Parameter 'source')
+   at System.Linq.ThrowHelper.ThrowArgumentNullException(ExceptionArgument argument)
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at WebApplication1.Repositories.User.UserRepository.Update_User_All_Info_Async(Int32 userId, Int32 id, Update_User_AllInfo_DTO dto) in C:\Users\remin\Desktop\trening\Euro_Trans_API\WebApplication1\Repositories\User\UserRepository.cs:line 303

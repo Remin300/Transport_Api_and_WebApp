@@ -1,0 +1,124 @@
+
+
+  @if (_towar) {
+<div class="towar-edit-form">
+  <h2> {{ title ?? "" }}</h2>
+
+
+
+  <!-- Dane podstawowe -->
+  <section class="form-section">
+    <div class="form-grid grid-3col-4-1-1">
+      <div class="form-field">
+        <label>Nazwa towaru</label>
+        <input type="text"
+               [(ngModel)]="_towar.nazwa" />
+      </div>
+
+      <div class="form-field">
+        <label>Ilość</label>
+        <input type="number"
+               class="form-control"
+               [(ngModel)]="_towar.ilosc" />
+      </div>
+
+      <div class="form-field">
+        <label>Waga</label>
+
+        <input type="number"
+               class="form-control"
+               [(ngModel)]="_towar.waga" />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Załadunek -->
+  <section class="form-section">
+    <div class="form-grid grid-3col-4-1-1">
+
+      <div class="form-field">
+        <label for="miejsceZa">Miejsce załadunku</label>
+        <input type="text"
+               [(ngModel)]="_towar.miejsceZa" />
+      </div>
+
+      <div class="form-field">
+        <label for="dataZalad">Data załadunku</label>
+        <input type="date"
+               [(ngModel)]="_towar.dataZalad" />
+      </div>
+
+      <div class="form-field">
+        <label for="godzinaZalad">Godzina załadunku</label>
+        <input type="text"
+               [(ngModel)]="_towar.godzinaZalad" />
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- Rozładunek -->
+  <section class="form-section">
+
+    <div class="form-grid grid-3col-4-1-1">
+
+
+      <div class="form-field">
+        <label for="miejsceRo">Miejsce rozładunku</label>
+        <input type="text"
+               [(ngModel)]="_towar.miejsceRo" />
+      </div>
+
+      <div class="form-field">
+        <label for="dataRozlad">Data rozładunku</label>
+        <input type="date"
+               [(ngModel)]="_towar.dataRozlad" />
+      </div>
+
+      <div class="form-field">
+        <label for="godzinaRozlad">Godzina rozładunku</label>
+        <input type="text"
+               [(ngModel)]="_towar.godzinaRozlad" />
+      </div>
+
+
+    </div>
+  </section>
+
+
+
+  <!-- Uwagi -->
+  <section class="form-section">
+
+    <div class="form-grid grid-1col">
+      <div class="form-field">
+        <label for="uwagi">Uwagi</label>
+        <textarea rows="4"
+                  [(ngModel)]="_towar.uwagi"></textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- Przyciski -->
+  <div class="form-action-buttons">
+
+
+
+
+    <button type="button"
+            class="btn btn-primary"
+            (click)="zapisz()">
+      Zapisz zmiany
+    </button>
+
+
+  </div>
+
+
+</div>
+  } @else {
+  <p>Ładowanie danych towaru...</p>
+  }
+

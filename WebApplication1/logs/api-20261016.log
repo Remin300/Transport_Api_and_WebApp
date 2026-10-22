@@ -1,0 +1,63 @@
+2026-10-16 14:18:01.529 +02:00 [ERR] Błąd podczas tworzenia zlecenia
+FirebirdSql.Data.FirebirdClient.FbException (0x80004005): validation error for column "ZLECENIA_SPED"."FILTR2", value "*** null ***"
+ ---> FirebirdSql.Data.Common.IscException: validation error for column "ZLECENIA_SPED"."FILTR2", value "*** null ***"
+   at FirebirdSql.Data.Client.Managed.IResponseExtensions.HandleResponseException(IResponse response)
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ReadResponseAsync(CancellationToken cancellationToken)
+   at FirebirdSql.Data.Client.Managed.Version12.GdsStatement.ExecuteAsync(Int32 timeout, IDescriptorFiller descriptorFiller, CancellationToken cancellationToken)
+   at FirebirdSql.Data.Client.Managed.Version12.GdsStatement.ExecuteAsync(Int32 timeout, IDescriptorFiller descriptorFiller, CancellationToken cancellationToken)
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommandAsync(CommandBehavior behavior, Boolean returnsSet, CancellationToken cancellationToken)
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQueryAsync(CancellationToken cancellationToken)
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQueryAsync(CancellationToken cancellationToken)
+   at LinqToDB.Data.DataConnection.ExecuteNonQueryAsync(CancellationToken cancellationToken) in /_/Source/LinqToDB/Data/DataConnection.Async.cs:line 481
+   at LinqToDB.Data.DataConnection.ExecuteNonQueryAsync(CancellationToken cancellationToken) in /_/Source/LinqToDB/Data/DataConnection.Async.cs:line 481
+   at LinqToDB.Data.DataConnection.ExecuteNonQueryDataAsync(CancellationToken cancellationToken) in /_/Source/LinqToDB/Data/DataConnection.Async.cs:line 501
+   at LinqToDB.Data.DataConnection.ExecuteNonQueryDataAsync(CancellationToken cancellationToken) in /_/Source/LinqToDB/Data/DataConnection.Async.cs:line 501
+   at LinqToDB.Data.DataConnection.QueryRunner.ExecuteScalarAsync(CancellationToken cancellationToken) in /_/Source/LinqToDB/Data/DataConnection.QueryRunner.cs:line 770
+   at LinqToDB.Internal.Linq.QueryRunner.ScalarQueryAsync(Query query, IDataContext dataContext, IQueryExpressions expressions, Object[] ps, Object[] preambles, CancellationToken cancellationToken) in /_/Source/LinqToDB/Internal/Linq/QueryRunner.cs:line 854
+   at LinqToDB.Internal.Linq.QueryRunner.ScalarQueryAsync(Query query, IDataContext dataContext, IQueryExpressions expressions, Object[] ps, Object[] preambles, CancellationToken cancellationToken) in /_/Source/LinqToDB/Internal/Linq/QueryRunner.cs:line 854
+   at LinqToDB.Internal.Linq.QueryRunner.ScalarQueryAsync(Query query, IDataContext dataContext, IQueryExpressions expressions, Object[] ps, Object[] preambles, CancellationToken cancellationToken) in /_/Source/LinqToDB/Internal/Linq/QueryRunner.cs:line 854
+   at LinqToDB.Internal.Linq.QueryRunner.InsertWithIdentity`1.QueryAsync(IDataContext dataContext, T obj, InsertColumnFilter`1 columnFilter, String tableName, String serverName, String databaseName, String schemaName, TableOptions tableOptions, CancellationToken token) in /_/Source/LinqToDB/Internal/Linq/QueryRunner.InsertWithIdentity.cs:line 164
+   at LinqToDB.Internal.Linq.QueryRunner.InsertWithIdentity`1.QueryAsync(IDataContext dataContext, T obj, InsertColumnFilter`1 columnFilter, String tableName, String serverName, String databaseName, String schemaName, TableOptions tableOptions, CancellationToken token) in /_/Source/LinqToDB/Internal/Linq/QueryRunner.InsertWithIdentity.cs:line 164
+   at WebApplication1.Repositories.Zlecenia.Zlecenia_Repository.Create_Zlecenia_Async(Create_Zlecenie_Dto create_dto) in C:\Users\remin\Desktop\trening\Euro_Trans_API\WebApplication1\Repositories\Zlecenia\Zlecenia_Repository.cs:line 287
+2026-10-16 14:21:10.459 +02:00 [ERR] Błąd podczas tworzenia zlecenia
+FirebirdSql.Data.FirebirdClient.FbException (0x80004005): validation error for column "ZLECENIA_SPED"."FILTR2", value "*** null ***"
+ ---> FirebirdSql.Data.Common.IscException: validation error for column "ZLECENIA_SPED"."FILTR2", value "*** null ***"
+   at FirebirdSql.Data.Client.Managed.IResponseExtensions.HandleResponseException(IResponse response)
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ReadResponseAsync(CancellationToken cancellationToken)
+   at FirebirdSql.Data.Client.Managed.Version12.GdsStatement.ExecuteAsync(Int32 timeout, IDescriptorFiller descriptorFiller, CancellationToken cancellationToken)
+   at FirebirdSql.Data.Client.Managed.Version12.GdsStatement.ExecuteAsync(Int32 timeout, IDescriptorFiller descriptorFiller, CancellationToken cancellationToken)
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommandAsync(CommandBehavior behavior, Boolean returnsSet, CancellationToken cancellationToken)
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQueryAsync(CancellationToken cancellationToken)
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQueryAsync(CancellationToken cancellationToken)
+   at LinqToDB.Data.DataConnection.ExecuteNonQueryAsync(CancellationToken cancellationToken) in /_/Source/LinqToDB/Data/DataConnection.Async.cs:line 481
+   at LinqToDB.Data.DataConnection.ExecuteNonQueryAsync(CancellationToken cancellationToken) in /_/Source/LinqToDB/Data/DataConnection.Async.cs:line 481
+   at LinqToDB.Data.DataConnection.ExecuteNonQueryDataAsync(CancellationToken cancellationToken) in /_/Source/LinqToDB/Data/DataConnection.Async.cs:line 501
+   at LinqToDB.Data.DataConnection.ExecuteNonQueryDataAsync(CancellationToken cancellationToken) in /_/Source/LinqToDB/Data/DataConnection.Async.cs:line 501
+   at LinqToDB.Data.DataConnection.QueryRunner.ExecuteScalarAsync(CancellationToken cancellationToken) in /_/Source/LinqToDB/Data/DataConnection.QueryRunner.cs:line 770
+   at LinqToDB.Internal.Linq.QueryRunner.ScalarQueryAsync(Query query, IDataContext dataContext, IQueryExpressions expressions, Object[] ps, Object[] preambles, CancellationToken cancellationToken) in /_/Source/LinqToDB/Internal/Linq/QueryRunner.cs:line 854
+   at LinqToDB.Internal.Linq.QueryRunner.ScalarQueryAsync(Query query, IDataContext dataContext, IQueryExpressions expressions, Object[] ps, Object[] preambles, CancellationToken cancellationToken) in /_/Source/LinqToDB/Internal/Linq/QueryRunner.cs:line 854
+   at LinqToDB.Internal.Linq.QueryRunner.ScalarQueryAsync(Query query, IDataContext dataContext, IQueryExpressions expressions, Object[] ps, Object[] preambles, CancellationToken cancellationToken) in /_/Source/LinqToDB/Internal/Linq/QueryRunner.cs:line 854
+   at LinqToDB.Internal.Linq.QueryRunner.InsertWithIdentity`1.QueryAsync(IDataContext dataContext, T obj, InsertColumnFilter`1 columnFilter, String tableName, String serverName, String databaseName, String schemaName, TableOptions tableOptions, CancellationToken token) in /_/Source/LinqToDB/Internal/Linq/QueryRunner.InsertWithIdentity.cs:line 164
+   at LinqToDB.Internal.Linq.QueryRunner.InsertWithIdentity`1.QueryAsync(IDataContext dataContext, T obj, InsertColumnFilter`1 columnFilter, String tableName, String serverName, String databaseName, String schemaName, TableOptions tableOptions, CancellationToken token) in /_/Source/LinqToDB/Internal/Linq/QueryRunner.InsertWithIdentity.cs:line 164
+   at WebApplication1.Repositories.Zlecenia.Zlecenia_Repository.Create_Zlecenia_Async(Create_Zlecenie_Dto create_dto) in C:\Users\remin\Desktop\trening\Euro_Trans_API\WebApplication1\Repositories\Zlecenia\Zlecenia_Repository.cs:line 287
+2026-10-16 14:24:46.987 +02:00 [ERR] Błąd podczas tworzenia zlecenia
+FirebirdSql.Data.FirebirdClient.FbException (0x80004005): validation error for column "ZLECENIA_SPED"."FILTR1", value "*** null ***"
+ ---> FirebirdSql.Data.Common.IscException: validation error for column "ZLECENIA_SPED"."FILTR1", value "*** null ***"
+   at FirebirdSql.Data.Client.Managed.IResponseExtensions.HandleResponseException(IResponse response)
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ReadResponseAsync(CancellationToken cancellationToken)
+   at FirebirdSql.Data.Client.Managed.Version12.GdsStatement.ExecuteAsync(Int32 timeout, IDescriptorFiller descriptorFiller, CancellationToken cancellationToken)
+   at FirebirdSql.Data.Client.Managed.Version12.GdsStatement.ExecuteAsync(Int32 timeout, IDescriptorFiller descriptorFiller, CancellationToken cancellationToken)
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommandAsync(CommandBehavior behavior, Boolean returnsSet, CancellationToken cancellationToken)
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQueryAsync(CancellationToken cancellationToken)
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQueryAsync(CancellationToken cancellationToken)
+   at LinqToDB.Data.DataConnection.ExecuteNonQueryAsync(CancellationToken cancellationToken) in /_/Source/LinqToDB/Data/DataConnection.Async.cs:line 481
+   at LinqToDB.Data.DataConnection.ExecuteNonQueryAsync(CancellationToken cancellationToken) in /_/Source/LinqToDB/Data/DataConnection.Async.cs:line 481
+   at LinqToDB.Data.DataConnection.ExecuteNonQueryDataAsync(CancellationToken cancellationToken) in /_/Source/LinqToDB/Data/DataConnection.Async.cs:line 501
+   at LinqToDB.Data.DataConnection.ExecuteNonQueryDataAsync(CancellationToken cancellationToken) in /_/Source/LinqToDB/Data/DataConnection.Async.cs:line 501
+   at LinqToDB.Data.DataConnection.QueryRunner.ExecuteScalarAsync(CancellationToken cancellationToken) in /_/Source/LinqToDB/Data/DataConnection.QueryRunner.cs:line 770
+   at LinqToDB.Internal.Linq.QueryRunner.ScalarQueryAsync(Query query, IDataContext dataContext, IQueryExpressions expressions, Object[] ps, Object[] preambles, CancellationToken cancellationToken) in /_/Source/LinqToDB/Internal/Linq/QueryRunner.cs:line 854
+   at LinqToDB.Internal.Linq.QueryRunner.ScalarQueryAsync(Query query, IDataContext dataContext, IQueryExpressions expressions, Object[] ps, Object[] preambles, CancellationToken cancellationToken) in /_/Source/LinqToDB/Internal/Linq/QueryRunner.cs:line 854
+   at LinqToDB.Internal.Linq.QueryRunner.ScalarQueryAsync(Query query, IDataContext dataContext, IQueryExpressions expressions, Object[] ps, Object[] preambles, CancellationToken cancellationToken) in /_/Source/LinqToDB/Internal/Linq/QueryRunner.cs:line 854
+   at LinqToDB.Internal.Linq.QueryRunner.InsertWithIdentity`1.QueryAsync(IDataContext dataContext, T obj, InsertColumnFilter`1 columnFilter, String tableName, String serverName, String databaseName, String schemaName, TableOptions tableOptions, CancellationToken token) in /_/Source/LinqToDB/Internal/Linq/QueryRunner.InsertWithIdentity.cs:line 164
+   at LinqToDB.Internal.Linq.QueryRunner.InsertWithIdentity`1.QueryAsync(IDataContext dataContext, T obj, InsertColumnFilter`1 columnFilter, String tableName, String serverName, String databaseName, String schemaName, TableOptions tableOptions, CancellationToken token) in /_/Source/LinqToDB/Internal/Linq/QueryRunner.InsertWithIdentity.cs:line 164
+   at WebApplication1.Repositories.Zlecenia.Zlecenia_Repository.Create_Zlecenia_Async(Create_Zlecenie_Dto create_dto) in C:\Users\remin\Desktop\trening\Euro_Trans_API\WebApplication1\Repositories\Zlecenia\Zlecenia_Repository.cs:line 287

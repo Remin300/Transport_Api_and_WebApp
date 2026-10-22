@@ -1,0 +1,476 @@
+/* ============================================================= */
+/* ============ Motywy kolorów dla całej aplikacji============== */
+/* ============================================================= */
+/* =========================
+   MOTYW JASNY
+   ========================= */
+
+
+
+:root {
+  color-scheme: light;
+  --bg-main: #f5f7fa;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --text-main: #212529;
+  --text-muted: #6c757d;
+  --border-color: #dee2e6;
+  --primary-color: #0d6efd;
+  --danger-color: #dc3545;
+  --hover-color: #e9ecef;
+  /* Sidebar */
+  --sidebar-bg: #212529;
+  --sidebar-text: #dee2e6;
+  --sidebar-text-active: #ffffff;
+  --sidebar-hover: #343a40;
+  /* statusy */
+  --status-1_bg: lightyellow;
+  --status-1_col: black;
+  --status-2_bg: lightgreen;
+  --status-2_col: black;
+  --status-3_bg: mistyrose;
+  --status-3_col: black;
+  --status-4_bg: lightblue;
+  --status-4_col: black;
+  --status-un_bg: #e5e7eb;
+  --status-un_col: black;
+}
+
+  /* =========================
+   MOTYW CIEMNY
+   ========================= */
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg-main: #181a1b;
+    --bg-card: #242729;
+    --bg-input: #303438;
+    --text-main: #e9ecef;
+    --text-muted: #adb5bd;
+    --border-color: #454a4f;
+    --primary-color: #6ea8fe;
+    --danger-color: #ff6b75;
+    --hover-color: #343a40;
+    /* Sidebar */
+    --sidebar-bg: #151719;
+    --sidebar-text: #c8cdd2;
+    --sidebar-text-active: #ffffff;
+    --sidebar-hover: #2c3136;
+    /* statusy */
+    --status-1_bg: #514a2b; /* żółty */
+    --status-1_col: #fff0a6;
+    --status-2_bg: #244b35; /* zielony */
+    --status-2_col: #a8e6bc;
+    --status-3_bg: #512f35; /* czerwono-różowy */
+    --status-3_col: #ffc1c8;
+    --status-4_bg: #243f59; /* niebieski */
+    --status-4_col: #b6dcff;
+    --status-un_bg: #383d42; /* neutralny */
+    --status-un_col: #e9ecef;
+  }
+/* ============================================================= */
+/* ============================================================= */
+/* ============================================================= */
+
+
+
+/* ============= Formularz edycji ======================= */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  position: relative;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.form-action-buttons {
+  position: sticky;
+  bottom: 0;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 12px 24px;
+  margin-bottom: 0;
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  z-index: 10;
+}
+
+.page-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.page-header {
+  flex-shrink: 0;
+}
+
+/* Sekcje formularza */
+.form-section {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+/*  header sekcji */
+.section-header {
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+  .section-header h4 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+
+
+/* ============================================================= */
+
+
+/* ============================================================= */
+/* ========== Strona z listą obiektów i filtrami =============== */
+/* ============================================================= */
+
+.toolbar-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 15px;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+
+.filter-row {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.page-input {
+  width: 55px;
+  height: 30px;
+  padding: 3px 6px;
+  font-size: 13px;
+}
+
+.pagination-panel {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+  margin-left: auto;
+  font-size: 13px;
+}
+
+.page-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-input {
+  width: 70px;
+  text-align: center;
+}
+
+
+/* CSS dla tabeli (m.in.: kolorowania statusów )  */
+/* ====================================================  */
+.table-container {
+  width: 100%;
+  height: calc(100vh - 300px);
+  overflow: auto;
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+  /* Tabela może być szersza niż ekran */
+  .table-container table {
+    width: max-content;
+    min-width: 100%;
+    margin-bottom: 0;
+    color: var(--text-main);
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+  }
+
+  /* Komórki tabeli */
+  .table-container th,
+  .table-container td {
+    color: var(--text-main);
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+  }
+
+  /* Nagłówki nie zawijają się */
+  .table-container th {
+    white-space: nowrap;
+  }
+
+  /* Zamrożony nagłówek */
+  .table-container thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    border-bottom: 2px solid var(--border-color);
+  }
+
+tbody tr {
+  cursor: pointer;
+}
+
+/* Wybrany wiersz — motyw jasny */
+ tbody tr.selected-row > td {
+  background-color: #dbeafe !important;
+  color: #1e3a8a;
+}
+
+/* Wybrany wiersz — motyw ciemny */
+:root[data-theme="dark"]  tbody tr.selected-row > td {
+  background-color: #263f5c !important;
+  color: #e6f1ff;
+}
+
+/* Motyw jasny — podświetlenie po najechaniu */
+ tbody tr:hover > td {
+  background-color: #f0f4f8;
+}
+
+/* Motyw ciemny — podświetlenie po najechaniu */
+:root[data-theme="dark"] tbody tr:hover > td {
+  background-color: #303840;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-0 {
+  color: dimgrey;
+}
+
+.status-1 {
+  background-color: var(--status-1_bg);
+  color: var(--status-1_col);
+}
+
+.status-2 {
+  background-color: var(--status-2_bg);
+  color: var(--status-2_col);
+}
+
+.status-3 {
+  background-color: var(--status-3_bg);
+  color: var(--status-3_col);
+}
+
+.status-4 {
+  background-color: var(--status-4_bg);
+  color: var(--status-4_col);
+}
+
+.status-unknown {
+  background-color: var(--status-un_bg);
+  color: var(--status-un_col);
+}
+/* ====================================================  */
+
+
+.form-control,
+.form-select {
+  background-color: var(--bg-input);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+  .form-control:focus,
+  .form-select:focus {
+    background-color: var(--bg-input);
+    color: var(--text-main);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 20%, transparent);
+    outline: none;
+  }
+
+  /* Kolor opcji w rozwijanym select */
+  .form-select option {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+  }
+
+  /* Kolor tekstu placeholdera */
+  .form-control::placeholder {
+    color: var(--text-muted);
+    opacity: 1;
+  }
+
+/* Ustawia jasny kolor strzałki w select gdy motyw ciemny */
+:root[data-theme="dark"] .form-select {
+  background-color: var(--bg-input);
+  color: var(--text-main);
+  border-color: var(--border-color);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23e9ecef' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+
+/* ============================================================= */
+/* ============================================================= */
+/* ============================================================= */
+
+
+/* ============================================================= */
+/* ========== Ustawienia dla formatek edyzji =================== */
+/* ============================================================= */
+
+/* Siatka pól */
+.form-grid {
+  display: grid;
+  gap: 14px 18px;
+  align-items: start;
+}
+
+.form-field {
+  min-width: 0;
+}
+
+  .form-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+  }
+
+  .form-field .form-control,
+  .form-field .form-select {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+.form-field-date {
+  width: 180px;
+  max-width: 100%;
+}
+/* Długie pola tekstowe */
+.form-field-full {
+  grid-column: 1 / -1;
+}
+
+
+/* ============================================================= */
+/* ============================================================= */
+/* ============================================================= */
+
+
+/* ===========  Modal uniwersalne ustawienai  ============================= */
+/* Okno modalne */
+.modal-content {
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Nagłówek */
+.modal-header {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.9rem 1.2rem;
+}
+
+.modal-title {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/* Przycisk zamknięcia — motyw jasny */
+.modal-header .btn-close {
+  opacity: 0.7;
+}
+
+/* Przycisk zamknięcia — motyw ciemny */
+:root[data-theme="dark"] .modal-header .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+  opacity: 0.9;
+}
+
+/* Zawartość modala */
+.modal-body {
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  padding: 1rem;
+}
+
+/* Obramowania i pola formularzy wewnątrz modala */
+.modal-content .form-control,
+.modal-content .form-select {
+  background-color: var(--bg-input);
+  color: var(--text-main);
+  border-color: var(--border-color);
+}
+
+  .modal-content .form-control::placeholder {
+    color: var(--text-muted);
+    opacity: 1;
+  }
+
+  .modal-content .form-control:focus,
+  .modal-content .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 20%, transparent);
+  }
+
+/* Tabele wewnątrz modala */
+.modal-content .table {
+  color: var(--text-main);
+  background-color: var(--bg-card);
+  border-color: var(--border-color);
+}
+
+  .modal-content .table th {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    border-color: var(--border-color);
+  }
+
+  .modal-content .table td {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    border-color: var(--border-color);
+  }

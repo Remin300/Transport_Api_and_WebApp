@@ -1,0 +1,43 @@
+@if (notificationService.notification(); as notification) {
+
+<div class="notification"
+     [class.success]="notification.type === 'success'"
+     [class.error]="notification.type === 'error'"
+     [class.warning]="notification.type === 'warning'"
+     [class.info]="notification.type === 'info'">
+
+  <div class="notification-content">
+
+    <span class="notification-icon">
+      @if (notification.type === 'success') {
+      ✓
+      }
+
+      @if (notification.type === 'error') {
+      ✕
+      }
+
+      @if (notification.type === 'warning') {
+      !
+      }
+
+      @if (notification.type === 'info') {
+      i
+      }
+    </span>
+
+    <span class="notification-message">
+      {{ notification.message }}
+    </span>
+
+  </div>
+
+  <button type="button"
+          class="notification-close"
+          (click)="notificationService.close()">
+    ×
+  </button>
+
+</div>
+
+}

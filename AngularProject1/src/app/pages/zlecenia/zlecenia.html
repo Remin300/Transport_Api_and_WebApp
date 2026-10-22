@@ -1,0 +1,257 @@
+<div class="users-page">
+
+  <div class="toolbar-filters">
+
+    <!-- Rząd 1 -->
+    <div class="filter-row">
+
+      <select class="form-select"
+              [(ngModel)]="f_filtrDataRodzaj">
+
+        <option [ngValue]="1">Data zlecenia</option>
+        <option [ngValue]="2">Data załadunku</option>
+        <option [ngValue]="3">Data rozładunku</option>
+        <option [ngValue]="0">Data wystawienia faktury</option>
+      </select>
+
+      <input type="date"
+             class="form-control"
+             [(ngModel)]="f_dataOd"
+             title="Data od">
+
+      <input type="date"
+             class="form-control"
+             [(ngModel)]="f_dataDo"
+             title="Data do">
+
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="f_nrZlecenia"
+             placeholder="Nr zlecenia">
+
+
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="f_zleceniodawca"
+             placeholder="Zleceniodawca">
+
+
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="f_przewoznik"
+             placeholder="Przewoźnik">
+
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="f_nrRej"
+             placeholder="Nr rej.">
+
+
+
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="f_nrFaktury"
+             placeholder="Nr faktury">
+
+
+
+    </div>
+
+
+    <!-- Rząd 2 -->
+    <div class="filter-row">
+
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="f_miejsceRozladunku"
+             placeholder="Miejsce rozładunku">
+
+
+
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="f_kierowca"
+             placeholder="Kierowca">
+
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="f_miejsceZaladunku"
+             placeholder="Miejsce załadunku">
+
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="f_nrReferencyjny"
+             placeholder="Nr referencyjny">
+
+
+      <select class="form-select"
+              [(ngModel)]="f_idUser">
+
+        <option [ngValue]="0">Wszystkie użytkownicy</option>
+        @for (user of listaUserow; track user.id) {
+        <option [ngValue]="user.id">
+          {{ user.nazwa }}
+        </option>
+        }
+      </select>
+
+      <select class="form-select"
+              [(ngModel)]="f_idDzial">
+        <option [ngValue]="0">Wszystkie działy</option>
+        @for (dzial of listaDzialow; track dzial.id) {
+        <option [ngValue]="dzial.id">
+          {{ dzial.nazwa }}
+        </option>
+        }
+
+      </select>
+
+      <select class="form-select"
+              [(ngModel)]="f_idDodatkowyFiltr">
+        <option [ngValue]="0">Wszystkie filtry</option>
+        @for (filtr of listaFiltrow; track filtr.id) {
+        <option [ngValue]="filtr.id">
+          {{ filtr.nazwa }}
+        </option>
+        }
+      </select>
+
+      <select class="form-select"
+              [(ngModel)]="f_status">
+        <option [ngValue]="100">Wszystkie Statusy</option>
+        <option [ngValue]="0">Nowe</option>
+        <option [ngValue]="1">Częściowo zafakturowane</option>
+        <option [ngValue]="2">Zafakturowane</option>
+        <option [ngValue]="3">Do wyjaśnienia</option>
+        <option [ngValue]="4">Zamknięte</option>
+
+      </select>
+
+
+    </div>
+
+  </div>
+
+
+  <div class="toolbar">
+
+    <div class="toolbar-actions">
+
+      <button class="btn btn-primary btn-sm" (click)="szukaj()">
+        Szukaj
+      </button>
+
+      <button type="button" class="btn btn-secondary btn-sm" (click)="addZlecenie()">
+        + Dodaj
+      </button>
+
+      <button class="btn btn-secondary btn-sm" [disabled]="!selectedZlecenie" (click)="editZlecenie()">
+        ✎ Edytuj
+      </button>
+
+      <button class="btn btn-secondary btn-sm" (click)="deleteZlecenie()">
+        🗑 Usuń
+      </button>
+
+      <div class="pagination-panel">
+
+        <button class="btn btn-outline-primary btn-sm"
+                (click)="previousPage()">
+          &lt;
+        </button>
+
+        <div class="page-info">
+          <input type="number"
+                 class="page-input"
+                 [(ngModel)]="pageNo"
+                 min="1"
+                 [max]="totalPages">
+
+          <span>{{ totalPages }}</span>
+        </div>
+
+        <button class="btn btn-outline-primary btn-sm"
+                (click)="nextPage()">
+          &gt;
+        </button>
+
+      </div>
+    </div>
+
+
+  </div>
+  <div class="table-container">
+    <table class="table table-striped table-hover table-bordered mb-0">
+
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>Numer</th>
+          <th>Zleceniodawca</th>
+          <th>Data zlec.</th>
+          <th>Wykonawca</th>
+          <th>Data zał.</th>
+          <th>Data rozł.</th>
+          <th>Data wyst faktury</th>
+
+          <th>Staw. wł. waluta</th>
+          <th>Staw. wł. PLN</th>
+          <th>Staw. wł. waluta symb.</th>
+          <th>Staw. prz. waluta</th>
+          <th>Staw. prz. PLN</th>
+          <th>Staw. prz. waluta symb.</th>
+
+          <th>Kierowca obcy</th>
+          <th>Nr rej. pojazdu</th>
+          <th>Załadunek</th>
+          <th>Rozładunek</th>
+          <th>Użytkownik</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        @for (zlecenie of zlecenia; track zlecenie.iD_ZLECENIA_SPED) {
+
+        <tr (click)="selectZlecenie(zlecenie)" [class.selected-row]="selectedZlecenie?.iD_ZLECENIA_SPED === zlecenie.iD_ZLECENIA_SPED">
+          <td>
+            <span class="status-badge"
+                  [ngClass]="getStatusClass(zlecenie.finalized)">
+              {{ getStatusText(zlecenie.finalized) }}
+            </span>
+          </td>
+          <td>{{ zlecenie.numeR_PELNY }}</td>
+          <td>{{ zlecenie.nazwazleceniodawcy }}</td>
+          <td>{{ zlecenie.datA_ZLECENIA | date:'dd.MM.yy' }}</td>
+
+
+          <td>{{ zlecenie.nazwawykonawcy }}</td>
+          <td>{{ zlecenie.datA_ZALADUNKU | date:'dd.MM.yy' }}</td>
+          <td>{{ zlecenie.datA_ROZLADUNKU | date:'dd.MM.yy' }}</td>
+          <td>{{ zlecenie.datA_WYSTAWIENIA_FAKTURY | date:'dd.MM.yy' }}</td>
+
+          <td>{{ zlecenie.stawkA_WLASNA_WALUTA }}</td>
+          <td>{{ zlecenie.stawkA_WLASNA_PLN }}</td>
+          <td>{{ zlecenie.walutA_SW }}</td>
+          <td>{{ zlecenie.przewozniK_STAWKA_WALUTA }}</td>
+          <td>{{ zlecenie.stawkA_PRZEWOZNIK_PLN }}</td>
+          <td>{{ zlecenie.walutA_PS }}</td>
+
+          <td>{{ zlecenie.kierowcA_OBCY }}</td>
+          <td>{{ zlecenie.rejpojazdu }}</td>
+          <td>{{ zlecenie.trasA_OD }}</td>
+          <td>{{ zlecenie.trasA_DO }}</td>
+          <td>{{ zlecenie.osoba }}</td>
+
+        </tr>
+
+        }
+
+      </tbody>
+
+    </table>
+  </div>
+ </div>
+
+
+

@@ -1,0 +1,18 @@
+
+/* nadpisanie stylu dla filtrów */
+.filter-row .form-control,
+.filter-row .form-select {
+  flex: 1;
+  min-width: 0;
+}
+
+
+
+
+
+
+
+
+
+
+

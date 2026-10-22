@@ -1,0 +1,2 @@
+db_path=127.0.0.1:C:\Users\remin\Desktop\trening\BAZY_DANYCH\BazaTest.FDB
+files_path=C:\SoftTrans-App

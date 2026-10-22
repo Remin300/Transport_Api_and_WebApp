@@ -1,0 +1,43 @@
+<div class="login-page">
+
+
+
+  <div class="login-card">
+
+    <h2>Soft-Trans</h2>
+
+    <select id="theme"
+            [ngModel]="themeService.getTheme()"
+            (ngModelChange)="themeService.setTheme($event)">
+
+      <option value="light">☼</option>
+      <option value="dark">☾</option>
+    </select>
+
+    <div class="form-group">
+      <label>Login</label>
+
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="login">
+    </div>
+
+    <div class="form-group">
+      <label>Hasło</label>
+
+      <input type="password"
+             class="form-control"
+             [(ngModel)]="password">
+    </div>
+
+    <button type="button"
+            class="btn btn-primary w-100"
+            (click)="loginUser()">
+
+      Zaloguj
+
+    </button>
+
+  </div>
+
+</div>

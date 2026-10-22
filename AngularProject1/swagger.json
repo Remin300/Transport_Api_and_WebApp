@@ -1,0 +1,3587 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "TwojaAPI",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest_Dto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest_Dto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest_Dto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Login_User_Response_Dto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Login_User_Response_Dto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Login_User_Response_Dto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Auth/getAppCache": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAppCache_Dto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAppCache_Dto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAppCache_Dto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Kontrahent/GetKontrahentList": {
+      "get": {
+        "tags": [
+          "Kontrahent"
+        ],
+        "parameters": [
+          {
+            "name": "PageNo",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "nip",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "nazwa",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "aktywny",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/KontrahenciList_Dto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KontrahenciList_Dto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KontrahenciList_Dto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/Me": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Update_User_DTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Update_User_DTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Update_User_DTO"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/Users/UpdateMe": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_User_DTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_User_DTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_User_DTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/ResetPassMe": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_User_Pass_Dto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_User_Pass_Dto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_User_Pass_Dto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/GetUserToEdit/{id}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAllUserInfo_Dto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAllUserInfo_Dto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAllUserInfo_Dto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/Users/GetUserList": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "PageNo",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "LOGIN",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "IMIE",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NAZWISKO",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/User_List_Response_Dto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User_List_Response_Dto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User_List_Response_Dto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/UpdateUser/{id}": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_User_AllInfo_DTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_User_AllInfo_DTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_User_AllInfo_DTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/ResetUserPass/{id}": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/DeleteUser/{id}": {
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/Users/CreateUser": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Create_User_Dto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Create_User_Dto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Create_User_Dto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/Zlecenia/GetListaZlecen": {
+      "get": {
+        "tags": [
+          "Zlecenia"
+        ],
+        "parameters": [
+          {
+            "name": "PageNo",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Zleceniodawca",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NrReferencyjny",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Przewoznik",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NrRej",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NrZlecenia",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NrFaktury",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Kierowca",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "MiejsceZaladunku",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "MiejsceRozladunku",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "IdUser",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "IdDzial",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "IdDodatkowyFiltr",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Status",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "FiltrDataRodzaj",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "DataOd",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "DataDo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "Transport_0_Spedycja_1",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lista_Zlecen_Response_Dto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lista_Zlecen_Response_Dto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lista_Zlecen_Response_Dto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Zlecenia/GetLadunekZbiorowy/{id}": {
+      "get": {
+        "tags": [
+          "Zlecenia"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ladunek_Zbiorowy_Response_Dto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ladunek_Zbiorowy_Response_Dto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ladunek_Zbiorowy_Response_Dto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/Zlecenia/CreateZlecenie": {
+      "post": {
+        "tags": [
+          "Zlecenia"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Zlecenie_Dto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Zlecenie_Dto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Zlecenie_Dto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/Zlecenia/UpdateZlecenie/{id}": {
+      "post": {
+        "tags": [
+          "Zlecenia"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Zlecenie_Dto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Zlecenie_Dto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Zlecenie_Dto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Zlecenia/DeleteZlecenie/{id}": {
+      "delete": {
+        "tags": [
+          "Zlecenia"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/Zlecenia/GetZlecenieForEditById/{id}": {
+      "get": {
+        "tags": [
+          "Zlecenia"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetZlecenieToEdit_Dto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetZlecenieToEdit_Dto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetZlecenieToEdit_Dto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Zlecenia/GetTowarById/{id}": {
+      "get": {
+        "tags": [
+          "Zlecenia"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Update_Towar_Dto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Update_Towar_Dto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Update_Towar_Dto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/Zlecenia/UpdatetTowar": {
+      "post": {
+        "tags": [
+          "Zlecenia"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Towar_Dto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Towar_Dto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Towar_Dto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Zlecenia/CreateTowar": {
+      "post": {
+        "tags": [
+          "Zlecenia"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Towar_Dto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Towar_Dto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Towar_Dto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/Zlecenia/DeleteTowar/{id}": {
+      "delete": {
+        "tags": [
+          "Zlecenia"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/Zlecenia/GetStawkaWlasnaById/{id}": {
+      "get": {
+        "tags": [
+          "Zlecenia"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Update_Stawka_Wlasna_Dto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Update_Stawka_Wlasna_Dto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Update_Stawka_Wlasna_Dto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/Zlecenia/UpdatetStawkaWlasna": {
+      "post": {
+        "tags": [
+          "Zlecenia"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Stawka_Wlasna_Dto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Stawka_Wlasna_Dto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Stawka_Wlasna_Dto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Zlecenia/CreateStawkaWlasna": {
+      "post": {
+        "tags": [
+          "Zlecenia"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Stawka_Wlasna_Dto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Stawka_Wlasna_Dto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Stawka_Wlasna_Dto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/Zlecenia/DeleteStawkaWlasna/{id}": {
+      "delete": {
+        "tags": [
+          "Zlecenia"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/Zlecenia/GetStawkaKosztById/{id}": {
+      "get": {
+        "tags": [
+          "Zlecenia"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Update_Stawka_Kosztowa_Dto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Update_Stawka_Kosztowa_Dto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Update_Stawka_Kosztowa_Dto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/Zlecenia/UpdatetStawkaKosztowa": {
+      "post": {
+        "tags": [
+          "Zlecenia"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Stawka_Kosztowa_Dto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Stawka_Kosztowa_Dto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Stawka_Kosztowa_Dto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Zlecenia/CreateStawkaKosztowa": {
+      "post": {
+        "tags": [
+          "Zlecenia"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Stawka_Kosztowa_Dto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Stawka_Kosztowa_Dto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update_Stawka_Kosztowa_Dto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/Zlecenia/DeleteStawkaKosztowa/{id}": {
+      "delete": {
+        "tags": [
+          "Zlecenia"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/Zlecenia/GetDataForCreate": {
+      "get": {
+        "tags": [
+          "Zlecenia"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lista_Dane_do_kontrolek_Dto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lista_Dane_do_kontrolek_Dto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lista_Dane_do_kontrolek_Dto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AppCacheSelectOption_Dto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nazwa": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Create_User_Dto": {
+        "type": "object",
+        "properties": {
+          "login": {
+            "type": "string",
+            "nullable": true
+          },
+          "pass": {
+            "type": "string",
+            "nullable": true
+          },
+          "imie": {
+            "type": "string",
+            "nullable": true
+          },
+          "nazwisko": {
+            "type": "string",
+            "nullable": true
+          },
+          "iD_GRUPY": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idgrupa": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "visible": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "adres": {
+            "type": "string",
+            "nullable": true
+          },
+          "kod": {
+            "type": "string",
+            "nullable": true
+          },
+          "miasto": {
+            "type": "string",
+            "nullable": true
+          },
+          "lock": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "kseF_TOKEN": {
+            "type": "string",
+            "nullable": true
+          },
+          "iD_ROLA": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idrejestr": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "warunek": {
+            "type": "string",
+            "nullable": true
+          },
+          "passodkod": {
+            "type": "string",
+            "nullable": true
+          },
+          "grupa": {
+            "type": "string",
+            "nullable": true
+          },
+          "listaIdOddzialy": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          },
+          "listaIdDodatkoweFiltry": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetAllUserInfo_Dto": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/Update_User_AllInfo_DTO"
+          },
+          "dzialy": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppCacheSelectOption_Dto"
+            },
+            "nullable": true
+          },
+          "filtry": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppCacheSelectOption_Dto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetAppCache_Dto": {
+        "type": "object",
+        "properties": {
+          "stawkiVat": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StawkiVat_ORM"
+            },
+            "nullable": true
+          },
+          "oddzialy": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppCacheSelectOption_Dto"
+            },
+            "nullable": true
+          },
+          "filtryDodatkowe": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppCacheSelectOption_Dto"
+            },
+            "nullable": true
+          },
+          "users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppCacheSelectOption_Dto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetZlecenieToEdit_Dto": {
+        "type": "object",
+        "properties": {
+          "zlecenie": {
+            "$ref": "#/components/schemas/Update_Zlecenie_Dto"
+          },
+          "waluty": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppCacheSelectOption_Dto"
+            },
+            "nullable": true
+          },
+          "stawkiVat": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppCacheSelectOption_Dto"
+            },
+            "nullable": true
+          },
+          "kierowcy": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppCacheSelectOption_Dto"
+            },
+            "nullable": true
+          },
+          "pojazdy": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppCacheSelectOption_Dto"
+            },
+            "nullable": true
+          },
+          "naczepy": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppCacheSelectOption_Dto"
+            },
+            "nullable": true
+          },
+          "jm": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppCacheSelectOption_Dto"
+            },
+            "nullable": true
+          },
+          "slownikStawkiWlasne": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SlowniaStawek_Dto"
+            },
+            "nullable": true
+          },
+          "slownikStakiPrzewoz": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SlowniaStawek_Dto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "KontrahenciList_Dto": {
+        "type": "object",
+        "properties": {
+          "totalItems": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "kontrahenci": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Kontrahent_Dto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Kontrahent_Dto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nazwa": {
+            "type": "string",
+            "nullable": true
+          },
+          "nip": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Ladunek_Zbiorowy_Response_Dto": {
+        "type": "object",
+        "properties": {
+          "ladunek": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Towary_i_stawki_Dto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Lista_Dane_do_kontrolek_Dto": {
+        "type": "object",
+        "properties": {
+          "waluty": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppCacheSelectOption_Dto"
+            },
+            "nullable": true
+          },
+          "stawkiVat": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppCacheSelectOption_Dto"
+            },
+            "nullable": true
+          },
+          "jm": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppCacheSelectOption_Dto"
+            },
+            "nullable": true
+          },
+          "kierowcy": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppCacheSelectOption_Dto"
+            },
+            "nullable": true
+          },
+          "pojazdy": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppCacheSelectOption_Dto"
+            },
+            "nullable": true
+          },
+          "naczepy": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppCacheSelectOption_Dto"
+            },
+            "nullable": true
+          },
+          "slownikStawkiWlasne": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SlowniaStawek_Dto"
+            },
+            "nullable": true
+          },
+          "slownikStakiPrzewoz": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SlowniaStawek_Dto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Lista_Zlecen_Response_Dto": {
+        "type": "object",
+        "properties": {
+          "totalItems": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "listaZlecen": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VZleceniaSpedNew_ORM"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginRequest_Dto": {
+        "type": "object",
+        "properties": {
+          "login": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Login_User_Response_Dto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "token": {
+            "type": "string",
+            "nullable": true
+          },
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "dostepneOddzialy": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          },
+          "dostepneFiltry": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": { }
+      },
+      "SlowniaStawek_Dto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "nazwa": {
+            "type": "string",
+            "nullable": true
+          },
+          "defaultKwota": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "idDefaultVat": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idDefaultJednostkaMiar": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idDefaultWaluta": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Stawka_kosztowa_Dto": {
+        "type": "object",
+        "properties": {
+          "idTowaryKoszty": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idTowaru": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "nrFaktury": {
+            "type": "string",
+            "nullable": true
+          },
+          "opis": {
+            "type": "string",
+            "nullable": true
+          },
+          "ilosc": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "kwotaJednostkowa": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "kwotaCalkowita": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "waluta": {
+            "type": "string",
+            "nullable": true
+          },
+          "vat": {
+            "type": "string",
+            "nullable": true
+          },
+          "jednostkaMiary": {
+            "type": "string",
+            "nullable": true
+          },
+          "uwagi": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Stawka_wlasna_Dto": {
+        "type": "object",
+        "properties": {
+          "idTowaru": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idTowaryStawki": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "numer_Faktury": {
+            "type": "string",
+            "nullable": true
+          },
+          "trasa": {
+            "type": "string",
+            "nullable": true
+          },
+          "opis": {
+            "type": "string",
+            "nullable": true
+          },
+          "ilosc": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "waluta": {
+            "type": "string",
+            "nullable": true
+          },
+          "kwotaJednostkowa": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "kwotaCalkowita": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "vat": {
+            "type": "string",
+            "nullable": true
+          },
+          "jednostkaMiary": {
+            "type": "string",
+            "nullable": true
+          },
+          "uwagi": {
+            "type": "string",
+            "nullable": true
+          },
+          "idFakturyPozycje": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idFaktury": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "StawkiVat_ORM": {
+        "type": "object",
+        "properties": {
+          "idStawki": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "opis": {
+            "type": "string",
+            "nullable": true
+          },
+          "procent": {
+            "type": "number",
+            "format": "double"
+          },
+          "kseF_NAZWA": {
+            "type": "string",
+            "nullable": true
+          },
+          "opiS_STAWKI": {
+            "type": "string",
+            "nullable": true
+          },
+          "procedura": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Towar_Dto": {
+        "type": "object",
+        "properties": {
+          "idTowaru": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nR_FAKTURY": {
+            "type": "string",
+            "nullable": true
+          },
+          "odbiorca": {
+            "type": "string",
+            "nullable": true
+          },
+          "dostawca": {
+            "type": "string",
+            "nullable": true
+          },
+          "towar": {
+            "type": "string",
+            "nullable": true
+          },
+          "datawysylki": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "datadostarczenia": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "platnik": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Towary_i_stawki_Dto": {
+        "type": "object",
+        "properties": {
+          "towar": {
+            "$ref": "#/components/schemas/Towar_Dto"
+          },
+          "stawki_wlasne": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Stawka_wlasna_Dto"
+            },
+            "nullable": true
+          },
+          "stawki_kosztowe": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Stawka_kosztowa_Dto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Update_Stawka_Kosztowa_Dto": {
+        "type": "object",
+        "properties": {
+          "idTowaryKoszty": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idSlownikKosztow": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "kwotaWWalucie": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "idWaluty": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idVat": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idJednostkaMiar": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ilosc": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "uwagi": {
+            "type": "string",
+            "nullable": true
+          },
+          "idTowaru": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Update_Stawka_Wlasna_Dto": {
+        "type": "object",
+        "properties": {
+          "idTowaryStawki": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idSlownikStawek": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "kwotaWWalucie": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "idWaluty": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idVat": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idJednostkaMiar": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ilosc": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "uwagi": {
+            "type": "string",
+            "nullable": true
+          },
+          "idTowaru": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Update_Towar_Dto": {
+        "type": "object",
+        "properties": {
+          "idZlecenia": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idTowaru": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ilosc": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "waga": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "nazwa": {
+            "type": "string",
+            "nullable": true
+          },
+          "idZleceniodawcy": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idOdbiorca": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idDostawcy": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "dataZalad": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "dataRozlad": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "godzinaZalad": {
+            "type": "string",
+            "nullable": true
+          },
+          "godzinaRozlad": {
+            "type": "string",
+            "nullable": true
+          },
+          "pojazd": {
+            "type": "string",
+            "nullable": true
+          },
+          "naczepa": {
+            "type": "string",
+            "nullable": true
+          },
+          "kierowca": {
+            "type": "string",
+            "nullable": true
+          },
+          "miejsceZa": {
+            "type": "string",
+            "nullable": true
+          },
+          "miejsceRo": {
+            "type": "string",
+            "nullable": true
+          },
+          "uwagi": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Update_User_AllInfo_DTO": {
+        "type": "object",
+        "properties": {
+          "login": {
+            "type": "string",
+            "nullable": true
+          },
+          "pass": {
+            "type": "string",
+            "nullable": true
+          },
+          "imie": {
+            "type": "string",
+            "nullable": true
+          },
+          "nazwisko": {
+            "type": "string",
+            "nullable": true
+          },
+          "iD_GRUPY": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idgrupa": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "visible": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "adres": {
+            "type": "string",
+            "nullable": true
+          },
+          "kod": {
+            "type": "string",
+            "nullable": true
+          },
+          "miasto": {
+            "type": "string",
+            "nullable": true
+          },
+          "lock": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "kseF_TOKEN": {
+            "type": "string",
+            "nullable": true
+          },
+          "iD_ROLA": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idrejestr": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "warunek": {
+            "type": "string",
+            "nullable": true
+          },
+          "passodkod": {
+            "type": "string",
+            "nullable": true
+          },
+          "grupa": {
+            "type": "string",
+            "nullable": true
+          },
+          "listaIdOddzialy": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          },
+          "listaIdDodatkoweFiltry": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Update_User_DTO": {
+        "type": "object",
+        "properties": {
+          "login": {
+            "type": "string",
+            "nullable": true
+          },
+          "imie": {
+            "type": "string",
+            "nullable": true
+          },
+          "nazwisko": {
+            "type": "string",
+            "nullable": true
+          },
+          "adres": {
+            "type": "string",
+            "nullable": true
+          },
+          "miasto": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Update_User_Pass_Dto": {
+        "type": "object",
+        "properties": {
+          "newPass": {
+            "type": "string",
+            "nullable": true
+          },
+          "oldPass": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Update_Zlecenie_Dto": {
+        "type": "object",
+        "properties": {
+          "numerPelny": {
+            "type": "string",
+            "nullable": true
+          },
+          "idZleceniodawcy": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idWykonawcy": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "zleceniodawcaNazwa": {
+            "type": "string",
+            "nullable": true
+          },
+          "wykonawcaNazwa": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataZlecenia": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "dataZaladunku": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "dataRozladunku": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "rejPojazduObcego": {
+            "type": "string",
+            "nullable": true
+          },
+          "rejNaczepyObcej": {
+            "type": "string",
+            "nullable": true
+          },
+          "kierowcaObcy": {
+            "type": "string",
+            "nullable": true
+          },
+          "zmiennikObcy": {
+            "type": "string",
+            "nullable": true
+          },
+          "warunkiDodatkowe": {
+            "type": "string",
+            "nullable": true
+          },
+          "idUser": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "towar_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "towar_nazwa": {
+            "type": "string",
+            "nullable": true
+          },
+          "towar_ilosc": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "towar_wartosc": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "towar_idwaluty": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "sw_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "sw_slownik_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "stawkaWlasna": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "idWalutySw": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idTabeliSw": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idVatSw": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idJmSW": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ps_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ps_slownik_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "przewoznikStawka": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "idWalutyPs": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idTabeliPs": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idVatPs": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idJmPs": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idKategoria": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "dodatkowyOpisLadunku": {
+            "type": "string",
+            "nullable": true
+          },
+          "trasaOd": {
+            "type": "string",
+            "nullable": true
+          },
+          "trasaDo": {
+            "type": "string",
+            "nullable": true
+          },
+          "finalized": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "filtR1": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "zladauneK0": {
+            "type": "string",
+            "nullable": true
+          },
+          "wyladuneK0": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "User_Dto": {
+        "type": "object",
+        "properties": {
+          "iD_USER": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "login": {
+            "type": "string",
+            "nullable": true
+          },
+          "imie": {
+            "type": "string",
+            "nullable": true
+          },
+          "nazwisko": {
+            "type": "string",
+            "nullable": true
+          },
+          "adres": {
+            "type": "string",
+            "nullable": true
+          },
+          "miasto": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "User_List_Response_Dto": {
+        "type": "object",
+        "properties": {
+          "totalItems": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User_Dto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "VZleceniaSpedNew_ORM": {
+        "type": "object",
+        "properties": {
+          "iD_ZLECENIA_SPED": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nR_KOLEJNY": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "numeR_PELNY": {
+            "type": "string",
+            "nullable": true
+          },
+          "nazwazleceniodawcy": {
+            "type": "string",
+            "nullable": true
+          },
+          "datA_ZLECENIA": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "iD_FAKTURY": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rejpojazdu": {
+            "type": "string",
+            "nullable": true
+          },
+          "rejnaczepy": {
+            "type": "string",
+            "nullable": true
+          },
+          "numeR_FAKTURY": {
+            "type": "string",
+            "nullable": true
+          },
+          "nazwawykonawcy": {
+            "type": "string",
+            "nullable": true
+          },
+          "iD_WYKONAWCY": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "imP_EXP_KRAJ": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "oczekujace": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "linK_ZLECENIE": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "iD_KATEGORIA": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nazwakat": {
+            "type": "string",
+            "nullable": true
+          },
+          "jazda": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "numeR_KSIEGOWY": {
+            "type": "string",
+            "nullable": true
+          },
+          "zbiorowka": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "trasA_DO": {
+            "type": "string",
+            "nullable": true
+          },
+          "trasA_OD": {
+            "type": "string",
+            "nullable": true
+          },
+          "nrleceniodawcy": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "przeladunek": {
+            "type": "string",
+            "nullable": true
+          },
+          "finalized": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "kraJ_NAD": {
+            "type": "string",
+            "nullable": true
+          },
+          "kraJ_ODB": {
+            "type": "string",
+            "nullable": true
+          },
+          "osoba": {
+            "type": "string",
+            "nullable": true
+          },
+          "datA_ZALADUNKU": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "datA_ROZLADUNKU": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "datA_WYSTAWIENIA_FAKTURY": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "datA_SPRZEDAZY_FAKTURY": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "stawkA_WLASNA_WALUTA": {
+            "type": "number",
+            "format": "double"
+          },
+          "stawkA_WLASNA_PLN": {
+            "type": "number",
+            "format": "double"
+          },
+          "walutA_SW": {
+            "type": "string",
+            "nullable": true
+          },
+          "przewozniK_STAWKA_WALUTA": {
+            "type": "number",
+            "format": "double"
+          },
+          "stawkA_PRZEWOZNIK_PLN": {
+            "type": "number",
+            "format": "double"
+          },
+          "walutA_PS": {
+            "type": "string",
+            "nullable": true
+          },
+          "anulowano": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "anulowanO_POWOD": {
+            "type": "string",
+            "nullable": true
+          },
+          "datA_ANULOWANIA": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "iD_USER": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "filtR1": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nR_ZLECENIODAWCY": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "dodatkowyOpisLadunku": {
+            "type": "string",
+            "nullable": true
+          },
+          "warunkiDodatkowe": {
+            "type": "string",
+            "nullable": true
+          },
+          "kierowcA_OBCY": {
+            "type": "string",
+            "nullable": true
+          },
+          "radiO_KOD": {
+            "type": "string",
+            "nullable": true
+          },
+          "euroniP_1": {
+            "type": "string",
+            "nullable": true
+          },
+          "godzinA_ROZLADUNKU": {
+            "type": "string",
+            "nullable": true
+          },
+          "godzinA_ZALADUNKU": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Wprowadź token w formacie: Bearer {token}",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ],
+  "tags": [
+    {
+      "name": "Auth"
+    },
+    {
+      "name": "Kontrahent"
+    },
+    {
+      "name": "Users"
+    },
+    {
+      "name": "Zlecenia"
+    }
+  ]
+}

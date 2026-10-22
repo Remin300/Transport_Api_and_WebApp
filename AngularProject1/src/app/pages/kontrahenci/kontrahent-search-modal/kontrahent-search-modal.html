@@ -1,0 +1,76 @@
+<div class="users-page">
+
+  <!-- Filtry -->
+  <div class="toolbar-filters">
+    <div class="filter-row">
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="f_nazwa"
+             placeholder="Nazwa">
+
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="f_nip"
+             placeholder="NIP">
+    </div>
+  </div>
+  <!-- Przyciski i paginacja -->
+  <div class="toolbar">
+    <div class="toolbar-actions">
+      <button class="btn btn-primary btn-sm" (click)="szukaj()">
+        Szukaj
+      </button>
+
+      <button class="btn btn-primary btn-sm"
+              [disabled]="!selectedObj"
+              (click)="zatwierdzWybor()">
+        Wybierz
+      </button>
+
+      <div class="pagination-panel">
+        <button class="btn btn-outline-primary btn-sm"
+                (click)="previousPage()">
+          &lt;
+        </button>
+
+        <div class="page-info">
+          <input type="number"
+                 class="page-input"
+                 [(ngModel)]="pageNo"
+                 min="1"
+                 [max]="totalPages">
+
+          <span>{{ totalPages }}</span>
+        </div>
+
+        <button class="btn btn-outline-primary btn-sm"
+                (click)="nextPage()">
+          &gt;
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Przewija się tylko tabela -->
+  <div class="table-container">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Nazwa</th>
+          <th>NIP</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (object of kontrahenci; track object.id) {
+        <tr (click)="selectObj(object)"
+            [class.selected-row]="selectedObj?.id === object.id">
+          <td>{{ object.nazwa }}</td>
+          <td>{{ object.nip }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+</div>

@@ -1,0 +1,299 @@
+<div class="users-page">
+
+  <div class="toolbar-filters">
+    <div class="filter-row">
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="f_login"
+             placeholder="Login">
+
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="f_imie"
+             placeholder="Imię">
+
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="f_nazwisko"
+             placeholder="Nazwisko">
+
+    </div>
+  </div>
+
+
+  <div class="toolbar">
+
+    <div class="toolbar-actions">
+
+      <button class="btn btn-primary btn-sm" (click)="szukaj()">
+        Szukaj
+      </button>
+
+      <button type="button" class="btn btn-secondary btn-sm" (click)="addUser()">
+        + Dodaj
+      </button>
+
+      <button class="btn btn-secondary btn-sm" [disabled]="!selectedUser" (click)="editUser()">
+        ✎ Edytuj
+      </button>
+
+      <button class="btn btn-secondary btn-sm" (click)="deleteUser()">
+        🗑 Usuń
+      </button>
+
+      <div class="pagination-panel">
+
+        <button class="btn btn-outline-primary btn-sm"
+                (click)="previousPage()">
+          &lt;
+        </button>
+
+        <div class="page-info">
+          <input type="number"
+                 class="page-input"
+                 [(ngModel)]="pageNo"
+                 min="1"
+                 [max]="totalPages">
+
+          <span>{{ totalPages }}</span>
+        </div>
+
+        <button class="btn btn-outline-primary btn-sm"
+                (click)="nextPage()">
+          &gt;
+        </button>
+
+      </div>
+    </div>
+
+
+  </div>
+  <div class="table-container">
+    <table class="table table-striped table-hover table-bordered mb-0">
+
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Login</th>
+          <th>Imię</th>
+          <th>Nazwisko</th>
+
+        </tr>
+      </thead>
+
+      <tbody>
+
+        @for (user of users; track user.iD_USER) {
+
+        <tr (click)="selectUser(user)" [class.selected-row]="selectedUser?.iD_USER === user.iD_USER">
+          <td>{{ user.iD_USER }}</td>
+          <td>{{ user.login }}</td>
+          <td>{{ user.imie }}</td>
+          <td>{{ user.nazwisko }}</td>
+        </tr>
+
+        }
+
+      </tbody>
+
+    </table>
+
+  </div>
+</div>
+
+  @if (isUserModalOpen) {
+  <div class="modal-backdrop-custom">
+
+    <div class="user-modal">
+
+      <!-- HEADER -->
+      <div class="user-modal-header">
+        <h5>
+          {{ isEditMode ? 'Edycja użytkownika' : 'Nowy użytkownik' }}
+        </h5>
+
+        <button type="button"
+                class="btn-close"
+                (click)="isUserModalOpen = false">
+        </button>
+      </div>
+
+
+      <!-- BODY -->
+      <div class="user-modal-body">
+
+        <!-- DANE UŻYTKOWNIKA -->
+        <div class="user-data-section">
+
+          <h6 class="section-title">
+            Dane użytkownika
+          </h6>
+
+          <div class="row g-3">
+
+            <div class="col-md-6">
+              <label class="form-label">Login</label>
+              <input type="text"
+                     class="form-control"
+                     [(ngModel)]="userForm.login">
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Hasło</label>
+              <input type="password"
+                     class="form-control"
+                     [(ngModel)]="userForm.pass">
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Imię</label>
+              <input type="text"
+                     class="form-control"
+                     [(ngModel)]="userForm.imie">
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Nazwisko</label>
+              <input type="text"
+                     class="form-control"
+                     [(ngModel)]="userForm.nazwisko">
+            </div>
+
+            <div class="col-md-8">
+              <label class="form-label">Adres</label>
+              <input type="text"
+                     class="form-control"
+                     [(ngModel)]="userForm.adres">
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label">Kod pocztowy</label>
+              <input type="text"
+                     class="form-control"
+                     [(ngModel)]="userForm.kod">
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Miasto</label>
+              <input type="text"
+                     class="form-control"
+                     [(ngModel)]="userForm.miasto">
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- UPRAWNIENIA -->
+        <div class="permissions-section">
+
+          <h6 class="section-title">
+            Uprawnienia
+          </h6>
+
+          <div class="permissions-columns">
+
+            <!-- DZIAŁY -->
+            <div class="permission-box">
+
+              <div class="permission-header">
+                Działy
+              </div>
+
+              <div class="permission-list">
+
+                @for (dzial of listaDzialow; track dzial.id) {
+
+                <div class="form-check">
+
+                  <input class="form-check-input"
+                         type="checkbox"
+                         [id]="'dzial-' + dzial.id"
+                         [checked]="selectedDzialIds.includes(dzial.id ?? 0)"
+                         (change)="toggleDzial(dzial.id ?? 0)">
+
+                  <label class="form-check-label"
+                         [for]="'dzial-' + dzial.id">
+
+                    {{ dzial.nazwa }}
+
+                  </label>
+
+                </div>
+
+                }
+
+              </div>
+
+            </div>
+
+
+            <!-- FILTRY -->
+            <div class="permission-box">
+
+              <div class="permission-header">
+                Filtry
+              </div>
+
+              <div class="permission-list">
+
+                @for (filtr of listaFiltrow; track filtr.id) {
+
+                <div class="form-check">
+
+                  <input class="form-check-input"
+                         type="checkbox"
+                         [id]="'filtr-' + filtr.id"
+                         [checked]="selectedFiltrIds.includes(filtr.id ?? 0)"
+                         (change)="toggleFiltr(filtr.id ?? 0)">
+
+                  <label class="form-check-label"
+                         [for]="'filtr-' + filtr.id">
+
+                    {{ filtr.nazwa }}
+
+                  </label>
+
+                </div>
+
+                }
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FOOTER -->
+      <div class="user-modal-footer">
+
+        <button type="button"
+                class="btn btn-secondary"
+                (click)="isUserModalOpen = false">
+
+          Anuluj
+
+        </button>
+
+        <button type="button"
+                class="btn btn-primary"
+                (click)="saveUser()">
+
+          Zapisz
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+  }
+
+

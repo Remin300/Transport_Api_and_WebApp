@@ -1,0 +1,37 @@
+2026-10-08 12:32:27.840 +02:00 [INF] Usunięto użytkownika. UserId: 1, NumerUżytkownika: Dobelli Sebastien
+2026-10-08 12:33:52.806 +02:00 [ERR] Błąd podczas edycji danych usera
+System.InvalidCastException: Unable to cast object of type 'AsyncStateMachineBox`1[System.Object,LinqToDB.Internal.Linq.QueryRunner+InsertWithIdentity`1+<QueryAsync>d__2[WebApplication1.Obiekty_ORM.ObiektyORMLinq2DB.Urzytkownicy.Users_ORM]]' to type 'System.IConvertible'.
+   at System.Convert.ToInt32(Object value)
+   at WebApplication1.Repositories.User.UserRepository.Create_User_Async(Create_User_Dto dto) in C:\Users\remin\Desktop\trening\Euro_Trans_API\WebApplication1\Repositories\User\UserRepository.cs:line 601
+2026-10-08 13:42:56.115 +02:00 [ERR] Błąd podczas edycji danych usera
+FirebirdSql.Data.FirebirdClient.FbException (0x80004005): arithmetic exception, numeric overflow, or string truncation
+string right truncation
+ ---> FirebirdSql.Data.Common.IscException: arithmetic exception, numeric overflow, or string truncation
+string right truncation
+   at FirebirdSql.Data.Client.Managed.Version10.GdsStatement.WriteRawParameter(IXdrWriter xdr, DbField field)
+   at FirebirdSql.Data.Client.Managed.Version10.GdsStatement.WriteParameters()
+   at FirebirdSql.Data.Client.Managed.Version10.GdsStatement.GetParameterDataAsync(IDescriptorFiller descriptorFiller, Int32 index, CancellationToken cancellationToken)
+   at FirebirdSql.Data.Client.Managed.Version10.GdsStatement.SendExecuteToBufferAsync(Int32 timeout, IDescriptorFiller descriptorFiller, CancellationToken cancellationToken)
+   at FirebirdSql.Data.Client.Managed.Version12.GdsStatement.ExecuteAsync(Int32 timeout, IDescriptorFiller descriptorFiller, CancellationToken cancellationToken)
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommandAsync(CommandBehavior behavior, Boolean returnsSet, CancellationToken cancellationToken)
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQueryAsync(CancellationToken cancellationToken)
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQueryAsync(CancellationToken cancellationToken)
+   at LinqToDB.Data.DataConnection.ExecuteNonQueryAsync(CancellationToken cancellationToken) in /_/Source/LinqToDB/Data/DataConnection.Async.cs:line 481
+   at LinqToDB.Data.DataConnection.ExecuteNonQueryAsync(CancellationToken cancellationToken) in /_/Source/LinqToDB/Data/DataConnection.Async.cs:line 481
+   at LinqToDB.Data.DataConnection.ExecuteNonQueryDataAsync(CancellationToken cancellationToken) in /_/Source/LinqToDB/Data/DataConnection.Async.cs:line 501
+   at LinqToDB.Data.DataConnection.ExecuteNonQueryDataAsync(CancellationToken cancellationToken) in /_/Source/LinqToDB/Data/DataConnection.Async.cs:line 501
+   at LinqToDB.Data.DataConnection.QueryRunner.ExecuteScalarAsync(CancellationToken cancellationToken) in /_/Source/LinqToDB/Data/DataConnection.QueryRunner.cs:line 770
+   at LinqToDB.Internal.Linq.QueryRunner.ScalarQueryAsync(Query query, IDataContext dataContext, IQueryExpressions expressions, Object[] ps, Object[] preambles, CancellationToken cancellationToken) in /_/Source/LinqToDB/Internal/Linq/QueryRunner.cs:line 854
+   at LinqToDB.Internal.Linq.QueryRunner.ScalarQueryAsync(Query query, IDataContext dataContext, IQueryExpressions expressions, Object[] ps, Object[] preambles, CancellationToken cancellationToken) in /_/Source/LinqToDB/Internal/Linq/QueryRunner.cs:line 854
+   at LinqToDB.Internal.Linq.QueryRunner.ScalarQueryAsync(Query query, IDataContext dataContext, IQueryExpressions expressions, Object[] ps, Object[] preambles, CancellationToken cancellationToken) in /_/Source/LinqToDB/Internal/Linq/QueryRunner.cs:line 854
+   at LinqToDB.Internal.Linq.QueryRunner.InsertWithIdentity`1.QueryAsync(IDataContext dataContext, T obj, InsertColumnFilter`1 columnFilter, String tableName, String serverName, String databaseName, String schemaName, TableOptions tableOptions, CancellationToken token) in /_/Source/LinqToDB/Internal/Linq/QueryRunner.InsertWithIdentity.cs:line 164
+   at LinqToDB.Internal.Linq.QueryRunner.InsertWithIdentity`1.QueryAsync(IDataContext dataContext, T obj, InsertColumnFilter`1 columnFilter, String tableName, String serverName, String databaseName, String schemaName, TableOptions tableOptions, CancellationToken token) in /_/Source/LinqToDB/Internal/Linq/QueryRunner.InsertWithIdentity.cs:line 164
+   at WebApplication1.Repositories.User.UserRepository.Create_User_Async(Create_User_Dto dto) in C:\Users\remin\Desktop\trening\Euro_Trans_API\WebApplication1\Repositories\User\UserRepository.cs:line 598
+2026-10-08 15:30:32.057 +02:00 [INF] Usunięto użytkownika. UserId: 1, NumerUżytkownika: null
+2026-10-08 15:30:40.258 +02:00 [INF] Usunięto użytkownika. UserId: 1, NumerUżytkownika: 1111
+2026-10-08 15:30:44.921 +02:00 [INF] Usunięto użytkownika. UserId: 1, NumerUżytkownika: 123
+2026-10-08 15:30:48.486 +02:00 [INF] Usunięto użytkownika. UserId: 1, NumerUżytkownika: 222
+2026-10-08 15:30:53.413 +02:00 [INF] Usunięto użytkownika. UserId: 1, NumerUżytkownika: 333
+2026-10-08 15:31:01.909 +02:00 [INF] Usunięto użytkownika. UserId: 1, NumerUżytkownika: 222
+2026-10-08 15:31:05.607 +02:00 [INF] Usunięto użytkownika. UserId: 1, NumerUżytkownika: Aaaa
+2026-10-08 15:31:11.090 +02:00 [INF] Usunięto użytkownika. UserId: 1, NumerUżytkownika: A.TEST

@@ -1,0 +1,181 @@
+.form-container {
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+
+
+
+
+/* ========================================= */
+/* ========================================= */
+
+
+/* ========================================= */
+/* ===== maly naglowek z 2 kolumnami ======= */
+/* ========================================= */
+.section-header-2col {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 1fr);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+  .section-header-2col h4 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .section-header-2col button {
+    justify-self: end;
+    white-space: nowrap;
+  }
+
+/* ========================================= */
+/* ========================================= */
+
+ 
+
+
+
+  .form-grid.grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+.grid-2-8-1 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 14px 18px;
+}
+
+
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+
+.grid-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.grid-6-5-1-2-1-2-1 {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+  gap: 14px 18px;
+}
+
+
+.finance-subsection {
+  margin: 18px 0 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.pole-kontrahent {
+  min-height: 38px;
+  height: auto;
+  padding: 6px 12px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.form-actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 12px 24px;
+  background-color: #fff;
+  border-top: 1px solid #dee2e6;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+}
+
+/* Mniejsze ekrany */
+@media (max-width: 1000px) {
+
+  .form-grid.grid-2 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .grid-2-8-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .grid-5 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .grid-6-5-1-2-1-2-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+ 
+}
+
+@media (max-width: 600px) {
+  .grid-2,
+  .grid-3,
+  .grid-4
+  .grid-5 {
+    grid-template-columns: 1fr;
+  }
+
+  .form-section {
+    padding: 12px;
+  }
+
+  .form-field-full {
+    grid-column: auto;
+  }
+}
+
+.input-with-button {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 40px;
+  gap: 6px;
+  align-items: center;
+}
+
+  .input-with-button .form-control {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .input-with-button .btn {
+    width: 40px;
+    padding: 6px 0;
+  }
+
+
+.input-with-date {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 40px;
+  gap: 6px;
+  align-items: center;
+}
+
+  .input-with-date .form-control {
+    width: 100%;
+    min-width: 0;
+  }
+

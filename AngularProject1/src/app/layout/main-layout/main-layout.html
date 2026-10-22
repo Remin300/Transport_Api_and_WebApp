@@ -1,0 +1,118 @@
+<div class="app-layout">
+
+  <!-- Lewy panel -->
+  <aside class="sidebar" [class.collapsed]="menuCollapsed">
+
+    <div class="logo">
+      <span class="logo-text"></span>
+    </div>
+
+    <nav class="menu">
+
+      <button class="menu-item" (click)="toggleMenu()">
+        <span class="menu-icon">{{ strzalka }}</span>
+      </button>
+
+      <button class="menu-item" (click)="openZlecenia()">
+        <span class="menu-icon">⫶☰</span>
+        <span class="menu-text">Zlecenia</span>
+      </button>
+
+      <button class="menu-item">
+        <span class="menu-icon">⫶☰</span>
+        <span class="menu-text">Faktury</span>
+      </button>
+
+      <button class="menu-item">
+        <span class="menu-icon">⫶☰</span>
+        <span class="menu-text">Kontrahenci</span>
+      </button>
+
+      <button class="menu-item">
+        <span class="menu-icon">⫶☰</span>
+        <span class="menu-text">Pojazdy / Kierowcy</span>
+      </button>
+
+      <button class="menu-item" (click)="openUsers()">
+        <span class="menu-icon">⫶☰</span>
+        <span class="menu-text">Użytkownicy</span>
+      </button>
+
+      <button class="menu-item">
+        <span class="menu-icon">⫶☰</span>
+        <span class="menu-text">Analizy</span>
+      </button>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+      <button class="menu-item">
+        <span class="menu-icon">⚙️</span>
+        <span class="menu-text">Ustawienia</span>
+      </button>
+
+    </div>
+
+  </aside>
+
+  <!-- Prawa część aplikacji -->
+  <div class="main-area">
+
+    <!-- Górny pasek -->
+    <header class="topbar">
+
+      <div>
+        <strong></strong>
+      </div>
+
+      <div class="user-area">
+
+        <select id="theme"
+                [ngModel]="themeService.getTheme()"
+                (ngModelChange)="themeService.setTheme($event)">
+
+          <option value="light">☼</option>
+          <option value="dark">☾</option>
+        </select>
+
+        <span class="user-name">Użytkownik</span>
+        <button class="btn btn-sm btn-outline-secondary">
+          ⚙
+        </button>
+      </div>
+
+    </header>
+
+    <div class="tabs">
+
+      @for (tab of tabService.tabs; track tab.id) {
+
+      <div class="tab"
+           [class.active]="tab.id === tabService.activeTabId"
+           (click)="activateTab(tab)">
+
+        <span>{{ tab.title }}</span>
+
+        <button class="tab-close"
+                (click)="closeTab(tab.id, $event)">
+          ×
+        </button>
+
+      </div>
+
+      }
+
+    </div>
+
+
+    <!-- Obszar roboczy -->
+    <main class="workspace">
+
+      <router-outlet></router-outlet>
+
+    </main>
+
+  </div>
+
+</div>

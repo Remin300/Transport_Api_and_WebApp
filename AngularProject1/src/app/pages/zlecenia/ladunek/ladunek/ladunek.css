@@ -1,0 +1,93 @@
+.ladunek-container {
+  padding: 0.75rem;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+  /* Karty */
+  .ladunek-container .card {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+  }
+
+  .ladunek-container .card-header {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    padding: 0.65rem 0.8rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .ladunek-container .card-body {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+  }
+
+  /* Tabele */
+  .ladunek-container .table {
+    font-size: 0.875rem;
+    color: var(--text-main);
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+    margin-bottom: 0;
+  }
+
+    .ladunek-container .table th {
+      white-space: nowrap;
+      font-weight: 600;
+      color: var(--text-main);
+      background-color: var(--bg-main);
+      border-color: var(--border-color);
+    }
+
+    .ladunek-container .table td {
+      vertical-align: middle;
+      color: var(--text-main);
+      background-color: var(--bg-card);
+      border-color: var(--border-color);
+    }
+
+/* Przewijanie tabel */
+.ladunek-table {
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.stawki-table {
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+
+/* Przyciski */
+.ladunek-container .btn {
+  white-space: nowrap;
+}
+
+/* Pola formularza */
+.ladunek-container .form-control,
+.ladunek-container .form-select {
+  background-color: var(--bg-input);
+  color: var(--text-main);
+  border-color: var(--border-color);
+}
+
+  .ladunek-container .form-control::placeholder {
+    color: var(--text-muted);
+    opacity: 1;
+  }
+
+  .ladunek-container .form-control:focus,
+  .ladunek-container .form-select:focus {
+    background-color: var(--bg-input);
+    color: var(--text-main);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 20%, transparent);
+  }
+
+  /* Opcje w select */
+  .ladunek-container .form-select option {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+  }

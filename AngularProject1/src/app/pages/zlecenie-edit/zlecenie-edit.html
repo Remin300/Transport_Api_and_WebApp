@@ -1,0 +1,739 @@
+
+
+<div class="page-layout">
+
+  <!-- Nagłówek -->
+  <div class="page-header">
+
+    <div>
+      <h2> {{ title ?? "" }}</h2>
+
+
+    </div>
+
+  </div>
+
+
+  @if (isLoading) {
+
+  <div class="loading">
+    Ładowanie danych zlecenia...
+  </div>
+
+  }
+  @else {
+
+  <div class="page-container">
+
+    <!-- ===================================================== -->
+    <!-- PODSTAWOWE DANE -->
+    <!-- ===================================================== -->
+
+    <div class="form-section">
+
+      <div class="section-header">
+        <h4>Podstawowe dane</h4>
+      </div>
+
+      <div class="form-grid grid-5">
+
+        <!-- Numer -->
+        <div class="form-field">
+          <label>Numer zlecenia</label>
+
+          <input type="text"
+                 class="form-control"
+                 [(ngModel)]="zlecenie.numerPelny">
+        </div>
+
+        <!-- Data zlecenia -->
+        <div class="form-field form-field-date">
+          <label>Data zlecenia</label>
+
+          <input type="date"
+                 class="form-control"
+                 [(ngModel)]="zlecenie.dataZlecenia">
+        </div>
+        <!-- Status -->
+        <div class="form-field">
+          <label>Status</label>
+
+          <select class="form-select"
+                  [(ngModel)]="zlecenie.finalized">
+
+            <option [ngValue]="0">
+              Otwarte
+            </option>
+
+            <option [ngValue]="1">
+              Częściowo zafakturowane
+            </option>
+
+            <option [ngValue]="2">
+              Zafakturowane
+            </option>
+
+            <option [ngValue]="3">
+              Do wyjaśnienia
+            </option>
+
+            <option [ngValue]="4">
+              Zamknięte
+            </option>
+
+          </select>
+        </div>
+
+        <!-- Oddział -->
+        <div class="form-field">
+          <label>Oddział</label>
+
+          <select class="form-select"
+                  [(ngModel)]="zlecenie.idKategoria">
+
+            <option [ngValue]="null">
+              Wybierz oddział
+            </option>
+
+            @for (dzial of listaDzialow; track dzial.id) {
+
+            <option [ngValue]="dzial.id">
+              {{ dzial.nazwa }}
+            </option>
+
+            }
+
+          </select>
+        </div>
+
+        <!-- Filtr -->
+        <div class="form-field">
+          <label>Filtr</label>
+
+          <select class="form-select"
+                  [(ngModel)]="zlecenie.filtR1">
+
+            <option [ngValue]="null">
+              Brak
+            </option>
+
+            @for (filtr of listaFiltrow; track filtr.id) {
+
+            <option [ngValue]="filtr.id">
+              {{ filtr.nazwa }}
+            </option>
+
+            }
+
+          </select>
+        </div>
+
+      </div>
+
+
+      <div class="form-grid grid-2">
+
+        <!-- Zleceniodawca -->
+        <div class="form-field">
+          <label>Zleceniodawca</label>
+
+          <div class="input-with-button">
+            <div class="form-control pole-kontrahent">
+              {{ zlecenie?.zleceniodawcaNazwa ?? '' }}
+            </div>
+
+            <button type="button" class="btn btn-secondary btn-sm" (click)="otworzWyszukiwarkeKontrahentow()">
+              ...
+            </button>
+          </div>
+        </div>
+
+        <!-- Wykonawca -->
+        <div class="form-field">
+          <label>Wykonawca</label>
+
+          <div class="input-with-button">
+            <div class="form-control pole-kontrahent">
+              {{ zlecenie?.wykonawcaNazwa ?? '' }}
+            </div>
+
+            <button type="button" class="btn btn-secondary  btn-sm" (click)="otworzWyszukiwarkeKontrahentow2()">
+              ...
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- TERMINY I TRASA -->
+    <!-- ===================================================== -->
+
+    <div class="form-section">
+
+      <div class="section-header">
+        <h4>Terminy / trasa/ TRANSPORT</h4>
+      </div>
+
+      <div class="form-grid grid-4">
+
+        <div class="form-field">
+          <label>Nr rejestracyjny pojazdu</label>
+
+          <input type="text"
+                 class="form-control"
+                 list="pojazdyList"
+                 [(ngModel)]="zlecenie.rejPojazduObcego"
+                 placeholder="Wpisz lub wybierz numer">
+
+          <datalist id="pojazdyList">
+            @for (obiekt of listaPojazdow; track obiekt.id) {
+            <option [value]="obiekt.nazwa"></option>
+            }
+          </datalist>
+
+        </div>
+
+
+        <div class="form-field">
+          <label>Nr rejestracyjny naczepy</label>
+
+
+          <input type="text"
+                 class="form-control"
+                 list="naczepyList"
+                 [(ngModel)]="zlecenie.rejNaczepyObcej"
+                 placeholder="Wpisz lub wybierz numer">
+
+          <datalist id="naczepyList">
+            @for (obiekt of listaNaczep; track obiekt.id) {
+            <option [value]="obiekt.nazwa"></option>
+            }
+          </datalist>
+        </div>
+
+
+        <div class="form-field">
+          <label>Kierowca</label>
+
+
+
+          <input type="text"
+                 class="form-control"
+                 list="kierowcyList"
+                 [(ngModel)]="zlecenie.kierowcaObcy"
+                 placeholder="Wpisz lub wybierz numer">
+
+          <datalist id="kierowcyList">
+            @for (obiekt of listaKierowcow; track obiekt.id) {
+            <option [value]="obiekt.nazwa"></option>
+            }
+          </datalist>
+        </div>
+
+
+        <div class="form-field">
+          <label>Zmiennik</label>
+
+
+          <input type="text"
+                 class="form-control"
+                 list="kierowcyList2"
+                 [(ngModel)]="zlecenie.zmiennikObcy"
+                 placeholder="Wpisz lub wybierz numer">
+
+          <datalist id="kierowcyList2">
+            @for (obiekt of listaKierowcow; track obiekt.id) {
+            <option [value]="obiekt.nazwa"></option>
+            }
+          </datalist>
+        </div>
+
+      </div>
+
+      <div class="form-grid grid-2-8-1">
+
+
+        <div class="form-field">
+          <label>Trasa od</label>
+
+          <input type="text"
+                 class="form-control"
+                 [(ngModel)]="zlecenie.trasaOd">
+        </div>
+
+
+        <div class="form-field form-field-date">
+          <label>Data załadunku</label>
+
+          <input type="date"
+                 class="form-control"
+                 [(ngModel)]="zlecenie.dataZaladunku">
+        </div>
+
+        <div class="form-field">
+          <label>Trasa do</label>
+
+          <input type="text"
+                 class="form-control"
+                 [(ngModel)]="zlecenie.trasaDo">
+        </div>
+
+
+        <div class="form-field form-field-date">
+          <label>Data rozładunku</label>
+
+          <input type="date"
+                 class="form-control"
+                 [(ngModel)]="zlecenie.dataRozladunku">
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ===================================================== -->
+    <!-- FINANSE -->
+    <!-- ===================================================== -->
+
+    <div class="form-section">
+
+      <div class="section-header-2col">
+        <h4>Towar - pierwszy towar w zleceniu</h4>
+
+        <button type="button"
+                class="btn btn-secondary"
+                  (click)="otworz_Modal_Ladunek()">
+          Ładunek zbiorowy
+        </button>
+
+      </div>
+
+
+      <h5 class="finance-subsection">
+        Dane towaru
+      </h5>
+
+      <div class="form-grid grid-6-5-1-2-1-2-1">
+
+        <!-- Nazwa stawki -->
+        <div class="form-field">
+          <label>Nazwa towaru</label>
+
+          <input class="form-control"
+                 [(ngModel)]="zlecenie.towar_nazwa">
+
+        </div>
+
+        <div class="form-field">
+          <label>Ilość</label>
+
+          <input type="number"
+                 class="form-control"
+                 [(ngModel)]="zlecenie.towar_ilosc">
+        </div>
+
+        <div class="form-field">
+          <label>Wartość</label>
+
+          <input type="number"
+                 class="form-control"
+                 [(ngModel)]="zlecenie.towar_wartosc">
+        </div>
+
+        <div class="form-field">
+          <label>Waluta</label>
+
+          <select class="form-select"
+                  [(ngModel)]="zlecenie.towar_idwaluty">
+
+            <option [ngValue]="null">
+              Wybierz
+            </option>
+
+            @for (waluta of waluty; track waluta.id) {
+
+            <option [ngValue]="waluta.id">
+              {{ waluta.nazwa }}
+            </option>
+
+            }
+
+          </select>
+        </div>
+
+
+
+      </div>
+
+
+      <h5 class="finance-subsection">
+        Stawka własna
+      </h5>
+
+      <div class="form-grid grid-6-5-1-2-1-2-1">
+
+        <!-- Nazwa stawki -->
+        <div class="form-field">
+          <label>Nazwa stawki</label>
+
+          <select class="form-select"
+                  [(ngModel)]="zlecenie.sw_slownik_id">
+
+            <option [ngValue]="null">
+              Wybierz
+            </option>
+
+            @for (stawka of slownik_stawek; track stawka.id) {
+
+            <option [ngValue]="stawka.id">
+              {{ stawka.nazwa }}
+            </option>
+
+            }
+
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label>Jednostka miary</label>
+
+          <select class="form-select"  [(ngModel)]="zlecenie.idJmSW">
+
+            <option [ngValue]="null">
+              Wybierz
+            </option>
+
+            @for (jednostka of jm; track jednostka.id) {
+
+            <option [ngValue]="jednostka.id">
+              {{ jednostka.nazwa }}
+            </option>
+
+            }
+
+          </select>
+        </div>
+
+
+        <div class="form-field">
+          <label>Stawka</label>
+
+          <input type="number"
+                 class="form-control"
+                 [(ngModel)]="zlecenie.stawkaWlasna">
+        </div>
+
+
+        <div class="form-field">
+          <label>Waluta</label>
+
+          <select class="form-select"
+                  [(ngModel)]="zlecenie.idWalutySw">
+
+            <option [ngValue]="null">
+              Wybierz
+            </option>
+
+            @for (waluta of waluty; track waluta.id) {
+
+            <option [ngValue]="waluta.id">
+              {{ waluta.nazwa }}
+            </option>
+
+            }
+
+          </select>
+        </div>
+
+
+        <div class="form-field">
+          <label>Tabela kursowa</label>
+
+          <input type="number"
+                 class="form-control"
+                 [(ngModel)]="zlecenie.idTabeliSw">
+        </div>
+
+
+        <div class="form-field">
+          <label>VAT</label>
+
+          <select class="form-select"
+                  [(ngModel)]="zlecenie.idVatSw">
+
+            <option [ngValue]="null">
+              Wybierz
+            </option>
+
+            @for (vat of stawkiVat; track vat.id) {
+
+            <option [ngValue]="vat.id">
+              {{ vat.nazwa }}
+            </option>
+
+            }
+
+          </select>
+        </div>
+
+      </div>
+
+
+      <h5 class="finance-subsection">
+        Stawka przewoźnika
+      </h5>
+
+      <div class="form-grid grid-6-5-1-2-1-2-1">
+
+        <!-- Nazwa stawki -->
+        <div class="form-field">
+          <label>Nazwa stawki</label>
+
+          <select class="form-select"
+                  [(ngModel)]="zlecenie.ps_slownik_id">
+
+            <option [ngValue]="null">
+              Wybierz
+            </option>
+
+            @for (stawka of slownik_kosztow; track stawka.id) {
+
+            <option [ngValue]="stawka.id">
+              {{ stawka.nazwa }}
+            </option>
+
+            }
+
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Jednostka miary</label>
+
+          <select class="form-select" [(ngModel)]="zlecenie.idJmPs">
+
+            <option [ngValue]="null">
+              Wybierz
+            </option>
+
+            @for (jednostka of jm; track jednostka.id) {
+
+            <option [ngValue]="jednostka.id">
+              {{ jednostka.nazwa }}
+            </option>
+
+            }
+
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label>Stawka</label>
+
+          <input type="number"
+                 class="form-control"
+                 [(ngModel)]="zlecenie.przewoznikStawka">
+        </div>
+
+
+        <div class="form-field">
+          <label>Waluta</label>
+
+          <select class="form-select"
+                  [(ngModel)]="zlecenie.idWalutyPs">
+
+            <option [ngValue]="null">
+              Wybierz
+            </option>
+
+            @for (waluta of waluty; track waluta.id) {
+
+            <option [ngValue]="waluta.id">
+              {{ waluta.nazwa }}
+            </option>
+
+            }
+
+          </select>
+        </div>
+
+
+        <div class="form-field">
+          <label>Tabela kursowa</label>
+
+          <input type="number"
+                 class="form-control"
+                 [(ngModel)]="zlecenie.idTabeliPs">
+        </div>
+
+
+        <div class="form-field">
+          <label>VAT</label>
+
+          <select class="form-select"
+                  [(ngModel)]="zlecenie.idVatPs">
+
+            <option [ngValue]="null">
+              Wybierz
+            </option>
+
+            @for (vat of stawkiVat; track vat.id) {
+
+            <option [ngValue]="vat.id">
+              {{ vat.nazwa }}
+            </option>
+
+            }
+
+          </select>
+        </div>
+
+      </div>
+
+
+
+
+
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- ŁADUNEK I INFORMACJE DODATKOWE -->
+    <!-- ===================================================== -->
+
+    <div class="form-section">
+
+      <div class="section-header">
+        <h4>Ładunek i informacje dodatkowe</h4>
+      </div>
+
+      <div class="form-grid grid-2">
+
+        <div class="form-field form-field-full">
+          <label>Warunki dodatkowe</label>
+
+          <textarea class="form-control"
+                    rows="3"
+                    [(ngModel)]="zlecenie.warunkiDodatkowe">
+            </textarea>
+        </div>
+
+
+        <div class="form-field form-field-full">
+          <label>Dodatkowy opis ładunku</label>
+
+          <textarea class="form-control"
+                    rows="3"
+                    [(ngModel)]="zlecenie.dodatkowyOpisLadunku">
+            </textarea>
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- PRZYCISKI -->
+    <!-- ===================================================== -->
+
+    <div class="form-action-buttons">
+
+      <button type="button"
+              class="btn btn-secondary"
+              (click)="zamknijTab()">
+        Anuluj
+      </button>
+
+      <button type="button"
+              class="btn btn-primary"
+              (click)="zapisz()">
+        Zapisz zmiany
+      </button>
+
+    </div>
+
+  </div>
+
+  }
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- MODAL
+<!-- ===================================================== -->
+@if (pokazModalKontrahentow) {
+<div class="modal fade show d-block"
+     tabindex="-1"
+     role="dialog"
+     aria-modal="true">
+
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"
+       (click)="$event.stopPropagation()">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Wyszukiwarka kontrahentów</h5>
+
+        <button type="button"
+                class="btn-close"
+                (click)="zamknijWyszukiwarkeKontrahentow()">
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <app-kontrahent-search-modal (wybranoKontrahenta)="obsluzWyborKontrahenta($event)">
+        </app-kontrahent-search-modal>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop fade show"></div>
+}
+
+
+@if (pokazModalLadunek) {
+<div class="modal fade show d-block"
+     tabindex="-1"
+     role="dialog"
+     aria-modal="true">
+
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"
+       (click)="$event.stopPropagation()">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Ładunek zbiorowy</h5>
+
+        <button type="button"
+                class="btn-close"
+                (click)="zamknij_Modal_Ladunek()">
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+        @if (zlecenieId !== null) {
+        <app-ladunek [idZlecenia]="zlecenieId"></app-ladunek>
+        }
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop fade show"></div>
+}
